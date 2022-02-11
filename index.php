@@ -1,28 +1,34 @@
 <?php
-// Get All Posts in Feed
-$feed_url = "https://feeds.feedburner.com/ambratolm-cf";
-$feed_xml = file_get_contents($feed_url);
-$feed = new SimpleXMLElement($feed_xml);
-$entries = $feed->entry;
-
-// Get Random Post from Posts in Feed
-$entry_index = rand(0, count($entries) - 1);
-$entry = $entries[$entry_index];
-
-// Get All Images in Post
-$content = new DOMDocument();
-$content->loadHTML($entry->content);
-$imgs = $content->getElementsByTagName("img");
-
-// Get Random Image from Images in Post
-$img_index = rand(0, count($imgs) - 1);
-$img = $imgs[$img_index];
-$src = $img->getAttribute("src");
-
-// Send Image to Browser
-$headers = get_headers($src, true);
-header("Content-Type: " . $headers["Content-Type"]);
-header("Content-Length: " . $headers["Content-Length"]);
-readfile($src);
-exit;
+  $dirs = array_filter(glob("*"), "is_dir");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎲 Random Image by Ambratolm</title>
+</head>
+<style>
+  body {
+    font-family: "Courier New", sans-serif;
+    font-size: 150%;
+    background: silver;
+  }
+  li {
+    list-style: none;
+  }
+</style>
+<body>
+  <h1>🎲 Random Image</h1>
+  <p>
+    Pick a random image made by
+    <a href="https://ambratolm.cf" target="_blank">Ambratolm</a>.
+  </p>
+  <ul>
+    <?php foreach($dirs as $dir): ?>
+      <li>📂 <a href="./<?= $dir ?>" target="_blank"><?= $dir ?></a></li>
+    <?php endforeach; ?>
+  </ul>
+
+</body>
+</html>
