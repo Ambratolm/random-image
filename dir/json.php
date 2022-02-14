@@ -1,14 +1,24 @@
 <?php
 function image_json($image_path) {
-  $image_data = new stdClass();
-  $image_data->name = basename($image_path);
-  $image_data->title = substr(
-    $image_data->name, 0, strpos($image_data->name, "_")
-  );
-  if ($image_data->title === null || trim($image_data->title) === "") {
-    $image_data->title = $image_data->name;
+  $image = new stdClass();
+  $image->name = basename($image_path);
+  $image->title = image_title($image->name);
+  $image->url = image_url($image_path);
+  return json_encode($image);
+}
+
+function image_title($image_name) {
+  $title = substr($image_name, 0, strpos($image_name, "_"));
+  if ($title === null || trim($title) === "") {
+    $title = $image_name;
   }
-  $image_data->url = realpath($image_path);
-  return json_encode($image_data);
+  return $title;
+}
+
+function image_url($image_path) {
+  $server_name = $_SERVER["SERVER_NAME"];
+  $parent_dir_path = dirname($_SERVER["PHP_SELF"]);
+  $clean_image_path = str_replace("//", "/", ltrim($image_path, "."));
+  return $server_name . $parent_dir_path . $clean_image_path;
 }
 ?>
