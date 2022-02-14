@@ -1,5 +1,8 @@
 <?php
-  $dirs = array_filter(glob("*"), "is_dir");
+  $dirs = glob("*", GLOB_ONLYDIR);
+  if (($key = array_search("vendor", $dirs)) !== false) {
+    unset($dirs[$key]);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
