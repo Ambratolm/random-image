@@ -16,9 +16,10 @@ function image_title($image_name) {
 }
 
 function image_url($image_path) {
-  $server_name = $_SERVER["SERVER_NAME"];
+  $protocol = "https://";
+  $host_name = $_SERVER["SERVER_NAME"];
   $parent_dir_path = dirname($_SERVER["PHP_SELF"]);
   $clean_image_path = str_replace("//", "/", ltrim($image_path, "."));
-  return $server_name . $parent_dir_path . $clean_image_path;
+  return $protocol . $host_name . $parent_dir_path . $clean_image_path;
 }
 ?>
