@@ -4,6 +4,7 @@ function image_json($image_path) {
   $image->name = basename($image_path);
   $image->title = image_title($image->name);
   $image->url = image_url($image_path);
+  $image->type = mime_content_type($image_path);
   return json_encode($image);
 }
 
