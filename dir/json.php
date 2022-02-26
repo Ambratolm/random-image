@@ -1,8 +1,9 @@
 <?php
 function image_json($image_path) {
+  $image_path_infos = pathinfo($image_path);
   $image = new stdClass();
-  $image->name = basename($image_path);
-  $image->title = image_title($image->name);
+  $image->name = $image_path_infos["basename"];
+  $image->title = image_title($image_path_infos["filename"]);
   $image->url = image_url($image_path);
   $image->type = mime_content_type($image_path);
   return json_encode($image);
@@ -10,10 +11,9 @@ function image_json($image_path) {
 
 function image_title($image_name) {
   $title = substr($image_name, 0, strpos($image_name, "_"));
-  if ($title === null || trim($title) === "") {
-    $title = $image_name;
-  }
-  return $title;
+  if (empty(trim($title))) $title = $image_name;
+  $title = str_replace("-", " ", $title);
+  return ucfirst(trim($title));
 }
 
 function image_url($image_path) {

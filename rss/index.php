@@ -28,5 +28,5 @@ $headers = get_headers($src, true);
 header("Content-Type: " . $headers["Content-Type"]);
 header("Content-Length: " . $headers["Content-Length"]);
 readfile($src);
-exit;
+exit();
 ?>
