@@ -17,8 +17,8 @@ HTTP Web API that responds with a random [image](https://ambratolm.cf).
 - **`🌐 ./dir?json`** : returns **JSON File** with this data:
   - `title` : friendly image title (ex: `"Wracurd"`)
   - `name` : image file name with extension (ex: `"wracurd_paint_p_ft.jpg"`).
-  - `type` : image file full url (example: `"https://random-image.com/dir/images/wracurd_paint_p_ft.jpg"`).
-  - `url` : image file mime type (example: `"image/jpeg"`).
+  - `type` : image file mime type (example: `"image/jpeg"`).
+  - `url` : image file full url (example: `"https://random-image.com/dir/images/wracurd_paint_p_ft.jpg"`).
 
 ### 📁 RSS Endpoint
 
@@ -53,4 +53,5 @@ The JSON file data is **fully based** on the **image file**.
 
 ## 📄 License
 
-&copy; Ambratolm 2022
+- **Code**: [MIT](./LICENSE).
+- **Artworks**: [© Ambratolm](https://ambratolm.cf).
