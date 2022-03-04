@@ -3,9 +3,11 @@
 [![Web](https://img.shields.io/badge/web-blue?logo=w3c)](https://github.com/topics/web)
 [![PHP](https://img.shields.io/badge/php-blue?logo=php)](https://github.com/topics/php)
 
-HTTP Web API that responds with a random [image](https://ambratolm.cf).
+Web API that responds with a random [image](https://ambratolm.cf).
 
 [**🌐 View Live**](https://random-artwork.herokuapp.com)
+
+![Screenshot](./screenshot.gif?raw=true)
 
 ## 📂 Endpoints
 
